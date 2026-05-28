@@ -18,10 +18,8 @@ COPY package*.json ./
 RUN npm install --only=production
 
 COPY --from=build /usr/src/app/dist ./dist
-COPY --from=build /usr/src/app/src ./src
+COPY server.js ./
 
-# Se houver um servidor Node.js/Express, copie-o e rode-o.
-# Caso contrário, sirva os arquivos estáticos.
 EXPOSE 3000
 
-CMD ["npm", "run", "dev"]
+CMD ["npm", "start"]
